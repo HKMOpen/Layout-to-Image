@@ -25,17 +25,12 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        relativeLayout=(RelativeLayout)findViewById(R.id.container);
-        imageView=(ImageView)findViewById(R.id.imageView2);
-
-        layout_to_image=new Layout_to_Image(MainActivity.this,relativeLayout);
-
-        bitmap=layout_to_image.convert_layout();
-
+        relativeLayout = (RelativeLayout) findViewById(R.id.container);
+        imageView = (ImageView) findViewById(R.id.imageView2);
+        layout_to_image = Layout_to_Image.capture(this, relativeLayout);
+        bitmap = layout_to_image.convert_layout();
         imageView.setImageBitmap(bitmap);
-
-
+        layout_to_image.save_external_image_file(null);
     }
 
 
