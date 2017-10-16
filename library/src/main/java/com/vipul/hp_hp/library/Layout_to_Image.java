@@ -2,70 +2,91 @@ package com.vipul.hp_hp.library;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.Environment;
-import android.provider.MediaStore;
-import android.support.annotation.Nullable;
+import android.os.AsyncTask;
+import android.os.Handler;
 import android.view.View;
-
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 /**
  * Created by HP-HP on 3/3/2015.
  */
 public class Layout_to_Image {
 
-    private View _view;
+    private View raw_android_view_target;
     private Context _context;
-    private Bitmap bMap;
-    public static String FORMAT_FILE_IMAGE = "yyyyMMddhhmm_tck.jpg";
+    private taskDone mtasklistener;
+    public static String FORMAT_FILE_IMAGE = "yyyyMMddhhmm'_tck.jpg'";
     public static String folder_name = "folder_images";
 
-    public static Layout_to_Image capture(Context context, View target) {
-        return new Layout_to_Image(context, target);
+    public interface taskDone {
+        void complete();
+
+        void fail(String message);
+    }
+
+    public static Layout_to_Image capture(Context context, View target, taskDone task) {
+        Layout_to_Image ly = new Layout_to_Image(context, target);
+        ly.setListener(task);
+        ly.save_images();
+        return ly;
     }
 
     private Layout_to_Image(Context context, View view) {
         this._context = context;
-        this._view = view;
+        this.raw_android_view_target = view;
     }
 
-    public void save_external_image_file(@Nullable String file_date_format) {
-        if (bMap == null) return;
-        if (file_date_format == null) file_date_format = FORMAT_FILE_IMAGE;
-        //Save bitmap
-        String extr = Environment.getExternalStorageDirectory().toString() + File.separator + folder_name;
+    private void setListener(taskDone tt) {
+        mtasklistener = tt;
+    }
 
-        String fileName = new SimpleDateFormat(file_date_format).format(new Date());
-        File myPath = new File(extr, fileName);
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(myPath);
-            bMap.compress(Bitmap.CompressFormat.JPEG, 100, fos);
-            fos.flush();
-            fos.close();
-            MediaStore.Images.Media.insertImage(_context.getContentResolver(), bMap, "Screen", "screen");
-        } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        } catch (Exception e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
+    private Handler nh = new Handler();
+    public Bitmap convert_layout() {
+        raw_android_view_target.setDrawingCacheEnabled(true);
+        raw_android_view_target.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
+        raw_android_view_target.layout(0, 0, raw_android_view_target.getMeasuredWidth(), raw_android_view_target.getMeasuredHeight());
+        raw_android_view_target.buildDrawingCache(true);
+        output_bitmap = Bitmap.createBitmap(raw_android_view_target.getDrawingCache());
+        return output_bitmap;
+    }
+
+    private void save_images() {
+        getImageTask vb = new getImageTask();
+        vb.execute();
+    }
+
+
+    private Bitmap output_bitmap = null;
+
+    private class getImageTask extends AsyncTask<Void, Void, Integer> {
+
+        @Override
+        protected Integer doInBackground(Void... params) {
+            int tried = 0;
+            while (tried < 5) {
+                try {
+                    convert_layout();
+                    CapturePhotoUtils.insertImage(_context, output_bitmap, "tons", null);
+                    return 1;
+                } catch (Exception e) {
+                    tried++;
+                }
+            }
+            return 0;
         }
 
-
+        @Override
+        protected void onPostExecute(Integer result) {
+            super.onPostExecute(result);
+            if (result == 1) {
+                nh.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        mtasklistener.complete();
+                    }
+                });
+            }
+        }
     }
 
 
-    public Bitmap convert_layout() {
-        _view.setDrawingCacheEnabled(true);
-        _view.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        _view.layout(0, 0, _view.getMeasuredWidth(), _view.getMeasuredHeight());
-        _view.buildDrawingCache(true);
-        bMap = Bitmap.createBitmap(_view.getDrawingCache());
-        return bMap;
-    }
 }
