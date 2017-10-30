@@ -1,4 +1,52 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="white_paper">#cf2525</color>
+    <color name="colorPrimary">#e7e8e9</color>
+    <color name="colorPrimaryGreen">#00574d</color>
+    <color name="colorPrimaryGrand">#b59242</color>
+    <color name="colorPrimaryWhite">#ffffff</color>
+    <color name="colorPrimaryDark">#434343</color>
+
+    <color name="colorAccent">#737373</color>
+    <color name="colorAccentGreen">#006b5f</color>
+    <color name="colorAccentGrand">#ceb67b</color>
+    <color name="colorAccentWhite">#ffffff</color>
+    <color name="colorAccentDark">#2d2d2e</color>
+
+    <color name="colorAccentB">#58585b</color>
+    <color name="colorAccentBGreen">#005047</color>
+    <color name="colorAccentBGrand">#9b7e32</color>
+    <color name="colorAccentBWhite">#ffffff</color>
+    <color name="colorAccentBDark">#000000</color>
+    <color name="colorAccentGray">#afafaf</color>
+
+
+    <color name="facebook_blue">#416BC1</color>
+    <color name="black_overlay">#66000000</color>
+    <color name="black_overlay_dark">#d8000000</color>
+
+    <color name="red_23">#ffec2133</color>
+    <color name="sexy_meat">#ffe09280</color>
+    <color name="red_pink_26">#bf4444</color>
+    <color name="red_pink_27">#e24e0a0b</color>
+    <color name="dd_grey">#333333</color>
+    <color name="divider">#929292</color>
+    <color name="dark_grey">#929292</color>
+    <color name="letter">#e8c6c6c6</color>
+    <color name="bright">@color/colorPrimary</color>
+
+    <!--component for slider-->
+    <color name="shadowstart">#00000000</color>
+    <color name="shadowends">#7f000000</color>
+    <color name="field_color">#a45dafcf</color>
+    <color name="deep_green">#1b3b27</color>
+    <color name="deep_green_darker">#142d1d</color>
+    <color name="light_grand">@color/colorAccentBGrand</color>
+    <color name="yellow_dark">#aa852f</color>
+    <color name="king_gdark">#765d39</color>
+    <color name="king_grand">#aa852f</color>
+
+
+    <color name="colorAccentActivated">#0006b8</color>
+    <color name="colorAccentHighLighted">#00058a</color>
+
 </resources>

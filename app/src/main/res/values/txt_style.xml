@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="arrow_p">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">30dp</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:scaleType">centerInside</item>
+
+    </style>
+
+    <style name="arrow_p_text">
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:textSize">@dimen/tag_size_m5</item>
+        <item name="android:paddingLeft">@dimen/gap_lv1a</item>
+    </style>
+
+
+
+
+    <style name="membership_page_tv">
+        <item name="android:layout_alignParentBottom">true</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:padding">@dimen/gap_lv2</item>
+        <item name="android:background">#ac000000</item>
+        <item name="android:textSize">@dimen/tag_size_m2</item>
+        <item name="android:textColor">@color/colorPrimaryWhite</item>
+        <item name="android:layout_height">45dp</item>
+    </style>
+
+    <style name="roller_movie_detail">
+        <item name="android:textColor">@color/colorAccentBGrand</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">@dimen/tag_size_m2</item>
+    </style>
+
+    <style name="roller_movie_detail_dark" parent="roller_movie_detail">
+        <item name="android:textColor">@color/colorPrimaryGrand</item>
+    </style>
+
+
+    <style name="title_top_transaction_com" parent="title_top_left_pass">
+        <item name="android:textSize">@dimen/tag_size</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:layout_marginLeft">0dp</item>
+    </style>
+
+    <style name="title_small_transaction_com" parent="title_top_left_pass">
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:gravity">bottom|right</item>
+        <item name="android:layout_marginLeft">0dp</item>
+        <item name="android:layout_marginBottom">7dp</item>
+        <item name="android:textSize">@dimen/tag_size_pt</item>
+        <item name="android:textColor">@color/dark_grey</item>
+    </style>
+
+    <style name="title_top_left_pass" parent="title_bar_left_pass">
+        <item name="android:textSize">@dimen/tag_size</item>
+    </style>
+
+    <style name="membership_left_fd" parent="title_bar_left_pass">
+        <item name="android:textSize">@dimen/tag_size_m6</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+    </style>
+
+    <style name="membership_left_label" parent="title_bar_left_pass">
+        <item name="android:textSize">@dimen/tag_size_m6</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:textColor">@color/colorAccentBGrand</item>
+    </style>
+
+    <style name="title_bar_left_pass_fb_break_down" parent="title_bar_left_pass">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:textSize">@dimen/tag_size_m6</item>
+    </style>
+
+    <style name="title_bar_left_pass">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textColor">@color/colorAccentBGrand</item>
+        <item name="android:textSize">@dimen/tag_size_m2</item>
+    </style>
+
+    <style name="title_bar_left_pass_2" parent="title_bar_left_pass">
+        <item name="android:textSize">@dimen/tag_size_m5</item>
+        <item name="android:textColor">@color/black_overlay</item>
+        <item name="android:paddingLeft">4dp</item>
+    </style>
+
+    <style name="title_bar_left_peek_menu" parent="title_bar_left_pass">
+        <item name="android:textSize">@dimen/tag_size_m5</item>
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:paddingLeft">48dp</item>
+    </style>
+
+    <style name="title_bar_left">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:lines">1</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textColor">@color/colorAccentBGrand</item>
+        <item name="android:textSize">@dimen/tag_size</item>
+    </style>
+
+    <style name="title_bar_left.vip" parent="title_bar_left">
+        <item name="android:paddingTop">@dimen/gap_lv1</item>
+        <item name="android:textSize">@dimen/tag_home_title</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingBottom">@dimen/gap_lv1</item>
+        <item name="android:textColor">@color/colorPrimaryGrand</item>
+    </style>
+
+    <style name="title_bar_left.dark" parent="title_bar_left">
+        <item name="android:paddingTop">@dimen/gap_lv1</item>
+        <item name="android:paddingLeft">5dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:paddingBottom">@dimen/gap_lv1</item>
+        <item name="android:textColor">@color/colorPrimaryWhite</item>
+    </style>
+
+    <style name="title_bar_left.white" parent="title_bar_left">
+        <item name="android:paddingTop">@dimen/gap_lv1</item>
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:paddingBottom">@dimen/gap_lv1</item>
+        <item name="android:textColor">@color/dark_grey</item>
+    </style>
+
+    <style name="title_roller_face">
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/colorAccentBGrand</item>
+        <item name="android:textSize">@dimen/tag_home_title</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:maxWidth">300dp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textIsSelectable">false</item>
+        <item name="android:scrollHorizontally">false</item>
+        <item name="android:layout_centerHorizontal">true</item>
+
+
+        <!--  <item name="android:inputType">textNoSuggestions</item>
+          <item name="android:editable">false</item>
+          <item name="android:textIsSelectable">false</item>
+          <item name="android:scrollHorizontally">false</item>-->
+
+    </style>
+
+    <style name="title_sub_roller_face" parent="title_roller_face">
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/tag_size_m3</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:maxWidth">250dp</item>
+    </style>
+
+    <style name="entrance_code_bear_af_pay" parent="entrance_code_bear">
+        <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="entrance_code_bear">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/colorAccentBGrand</item>
+        <item name="android:textSize">@dimen/tag_size_m3</item>
+    </style>
+
+    <style name="entrance_code" parent="entrance_code_box">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:lines">1</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:padding">5dp</item>
+        <item name="android:textColor">@color/colorAccentBGrand</item>
+        <item name="android:textSize">@dimen/tag_home_title</item>
+
+    </style>
+
+    <style name="transaction_complete_box">
+        <item name="android:layout_marginRight">50dp</item>
+        <item name="android:layout_marginLeft">50dp</item>
+    </style>
+
+    <style name="entrance_code_box_qr" parent="transaction_complete_box">
+        <item name="android:layout_marginTop">10dp</item>
+    </style>
+
+    <style name="entrance_code_box_transaction" parent="transaction_complete_box">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+    </style>
+
+
+    <style name="entrance_code_box">
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginRight">50dp</item>
+        <item name="android:layout_marginLeft">50dp</item>
+    </style>
+
+    <style name="title_bar_center">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:lines">1</item>
+        <item name="android:capitalize">characters</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textColor">@color/colorPrimaryGrand</item>
+        <item name="android:textSize">@dimen/tag_size</item>
+    </style>
+
+    <style name="title_bar_center_pure" parent="title_bar_center">
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="title_bar_center.cap" parent="title_bar_center">
+        <item name="android:capitalize">words</item>
+    </style>
+
+    <style name="title_bar_center.center" parent="title_bar_center">
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:capitalize">none</item>
+        <item name="android:maxLines">1</item>
+    </style>
+
+    <style name="fnb_bm" parent="title_bar_center">
+        <item name="android:paddingLeft">0dp</item>
+        <item name="android:textSize">@dimen/tag_size_m6</item>
+    </style>
+
+    <style name="notice_center">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:maxLines">3</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/tag_size_tt</item>
+    </style>
+
+    <style name="notice_center.s" parent="notice_center">
+        <item name="android:textSize">@dimen/tag_size_pt</item>
+        <item name="android:layout_marginBottom">@dimen/gap_lv1a</item>
+    </style>
+
+    <style name="title_ledger_left">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">left|center_horizontal</item>
+        <item name="android:textColor">@color/dd_grey</item>
+        <item name="android:textSize">@dimen/tag_size_tiny</item>
+    </style>
+
+
+    <style name="desc_ledger_left">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">left|center_horizontal</item>
+        <item name="android:textColor">@color/dark_grey</item>
+        <item name="android:textSize">@dimen/tag_size_tiny</item>
+    </style>
+
+    <style name="title_bar_start">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">left</item>
+        <item name="android:lines">1</item>
+        <item name="android:paddingLeft">20dp</item>
+        <item name="android:textColor">@color/colorAccentBGrand</item>
+        <item name="android:textSize">@dimen/tag_size</item>
+    </style>
+
+    <style name="info_detail_movie">
+        <item name="android:ellipsize">end</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:lines">1</item>
+        <item name="android:textColor">@color/dd_grey</item>
+        <item name="android:textSize">@dimen/tag_size_m6</item>
+    </style>
+
+    <style name="info_detail_block">
+        <item name="android:gravity">left</item>
+        <item name="android:minLines">2</item>
+        <item name="android:textColor">@color/dd_grey</item>
+        <item name="android:textSize">@dimen/tag_size_m6</item>
+    </style>
+
+    <style name="login_button">
+        <item name="android:textColor">@color/colorPrimaryWhite</item>
+        <item name="android:gravity">left|center_vertical</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:layout_height">@dimen/login_button_height</item>
+    </style>
+</resources>

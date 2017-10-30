@@ -2,12 +2,15 @@ package com.vipul.hp_hp.library;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.os.AsyncTask;
-import android.os.Handler;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.View;
+import android.view.ViewTreeObserver;
+
 
 /**
- * Created by HP-HP on 3/3/2015.
+ * Created by pang on 10/16/17.
  */
 public class Layout_to_Image {
 
@@ -16,9 +19,12 @@ public class Layout_to_Image {
     private taskDone mtasklistener;
     public static String FORMAT_FILE_IMAGE = "yyyyMMddhhmm'_tck.jpg'";
     public static String folder_name = "folder_images";
+    private Bitmap output_bitmap = null;
 
     public interface taskDone {
-        void complete();
+        void complete(Bitmap bitmap, String path);
+
+        void pre();
 
         void fail(String message);
     }
@@ -26,66 +32,99 @@ public class Layout_to_Image {
     public static Layout_to_Image capture(Context context, View target, taskDone task) {
         Layout_to_Image ly = new Layout_to_Image(context, target);
         ly.setListener(task);
-        ly.save_images();
+        ly.scan();
         return ly;
     }
 
-    private Layout_to_Image(Context context, View view) {
+    public Layout_to_Image(Context context, View view) {
         this._context = context;
         this.raw_android_view_target = view;
+
+        ViewTreeObserver vto = raw_android_view_target.getViewTreeObserver();
+        vto.addOnGlobalLayoutListener(obs);
+
     }
 
-    private void setListener(taskDone tt) {
+    public void setListener(taskDone tt) {
         mtasklistener = tt;
     }
 
-    private Handler nh = new Handler();
-    public Bitmap convert_layout() {
-        raw_android_view_target.setDrawingCacheEnabled(true);
-        raw_android_view_target.measure(View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED), View.MeasureSpec.makeMeasureSpec(0, View.MeasureSpec.UNSPECIFIED));
-        raw_android_view_target.layout(0, 0, raw_android_view_target.getMeasuredWidth(), raw_android_view_target.getMeasuredHeight());
-        raw_android_view_target.buildDrawingCache(true);
-        output_bitmap = Bitmap.createBitmap(raw_android_view_target.getDrawingCache());
-        return output_bitmap;
-    }
+    private int h, w;
+    private String path_uri;
 
-    private void save_images() {
-        getImageTask vb = new getImageTask();
-        vb.execute();
-    }
+    private void convert_layout() {
+        if (raw_android_view_target == null) {
+            mtasklistener.fail("the main view is not found");
+            return;
+        }
+        //https://stackoverflow.com/questions/3591784/getwidth-and-getheight-of-view-returns-0
 
+        //        raw_android_view_target.requestLayout();
+        // raw_android_view_target.invalidateOutline();
+/*
+        int widthSpec = MeasureSpec.makeMeasureSpec(width, MeasureSpec.EXACTLY);
+        int heightSpec = MeasureSpec.makeMeasureSpec(height, MeasureSpec.EXACTLY);*/
 
-    private Bitmap output_bitmap = null;
-
-    private class getImageTask extends AsyncTask<Void, Void, Integer> {
-
-        @Override
-        protected Integer doInBackground(Void... params) {
-            int tried = 0;
-            while (tried < 5) {
-                try {
-                    convert_layout();
-                    CapturePhotoUtils.insertImage(_context, output_bitmap, "tons", null);
-                    return 1;
-                } catch (Exception e) {
-                    tried++;
+        // raw_android_view_target.measure(widthSpec, heightSpec);
+        //   raw_android_view_target.layout(raw_android_view_target.getMeasuredWidth(), raw_android_view_target.getMeasuredHeight());
+        if (_context == null) return;
+        if (h <= 0 || w <= 0) {
+            //   raw_android_view_target.invalidate();
+            mtasklistener.fail("view not ready");
+        } else {
+            output_bitmap = loadBitmapFromView(raw_android_view_target, h, w);
+            path_uri = CapturePhotoUtils.insertImage(_context, output_bitmap, "ticketing", new CapturePhotoUtils.Callback() {
+                @Override
+                public void complete() {
+                    raw_android_view_target.requestLayout();
+                    mtasklistener.complete(output_bitmap, path_uri);
                 }
+            });
+        }
+    }
+
+    public void destroy() {
+        try {
+            raw_android_view_target.getViewTreeObserver().removeOnGlobalLayoutListener(obs);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private ViewTreeObserver.OnGlobalLayoutListener obs = new ViewTreeObserver.OnGlobalLayoutListener() {
+        @Override
+        public void onGlobalLayout() {
+            if (raw_android_view_target == null) return;
+            //fully drawn, no need of listener anymore
+            h = raw_android_view_target.getHeight();
+            w = raw_android_view_target.getWidth();
+            if (h <= 0 || w <= 0) {
+                //  raw_android_view_target.invalidate();
+            }else{
+                raw_android_view_target.getViewTreeObserver().removeOnGlobalLayoutListener(this);
             }
-            return 0;
         }
 
-        @Override
-        protected void onPostExecute(Integer result) {
-            super.onPostExecute(result);
-            if (result == 1) {
-                nh.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        mtasklistener.complete();
-                    }
-                });
-            }
-        }
+    };
+
+    private static Bitmap loadBitmapFromView(View v, int h, int w) {
+        Bitmap b = Bitmap.createBitmap(w, h, Bitmap.Config.ARGB_8888);
+        Canvas c = new Canvas(b);
+
+        Paint paint2 = new Paint();
+        paint2.setColor(Color.WHITE);
+        paint2.setStyle(Paint.Style.FILL);
+        c.drawPaint(paint2);
+
+        v.layout(0, 0, v.getLayoutParams().width, v.getLayoutParams().height);
+        v.draw(c);
+        return b;
+    }
+
+
+    public void scan() {
+        mtasklistener.pre();
+        convert_layout();
     }
 
 

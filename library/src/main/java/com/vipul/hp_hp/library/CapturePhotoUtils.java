@@ -44,10 +44,7 @@ public class CapturePhotoUtils {
      * @param cb          optional additional call back
      * @return the string in return
      */
-    public static final String insertImage(Context contex,
-                                           Bitmap source,
-                                           String description,
-                                           Callback cb) {
+    public static final String insertImage(Context contex, Bitmap source, String description, Callback cb) {
         final SimpleDateFormat df = new SimpleDateFormat("dd/MM/yy:ss:mm:hh");
         final String filename_title = "img" + df.format(new Date());
         return insertImage(contex.getContentResolver(), source, filename_title, description, cb);

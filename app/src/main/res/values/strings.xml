@@ -3,4 +3,18 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="facebook_app_id">1833654483616104</string>
+    <string name="fb_login_protocol_scheme">fb1833654483616104</string>
+    <string name="firebase_default_channel_id">135624513168400</string>
+    <string name="payment_gate_way_staging">http://66.70.107.103</string>
+    <string name="payment_gate_way_staging_fm">http://13.228.58.92/website/webview/octo3.php</string>
+    <string name="payment_gate_2">http://www.istpayment.com</string>
+    <string name="payment_gate_process">https://uat2.octo3.net/ecommerce-web</string>
+    <string name="payment_gate_3">http://13.228.58.92/thirdparty/CYBS_UAT/2_way_AUTH_CARD.html</string>
+    <string name="payment_gate_4">https://0eafstag.cardinalcommerce.com</string>
+    <string name="payment_gate_5">https://testcustomer34.cardinalcommerce.com</string>
+    <string name="payment_gate_end_1">/novam/demo/demoMID2/output.jsp</string>
+    <string name="qa_string_long">[QA] Titg p q g y le BIG BIG XX XXXKSOPAKO P AOSKOP COKOPAKC 3829 7248972389472 789 279327 98237 29837 492837489237 4392874 9823</string>
+
 </resources>
