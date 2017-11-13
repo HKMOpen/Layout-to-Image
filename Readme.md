@@ -59,6 +59,10 @@ You can manually achieve this step with 3 steps:
 
 ```
 
+### Thank you for your support and we will bring more amazing libraries to your productive works. We are accepting bitcoin by the address as below. Please scan the QR code to start
+![wallet](http://s32.postimg.org/sdd1oio1t/qrwallet.jpg)
+
+
 ## License
 
 
